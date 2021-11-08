@@ -22,5 +22,12 @@
         <fileSet>
             <directory>wars</directory>
         </fileSet>
+        <fileSet>
+            <directory/>
+            <includes>
+                <include>deploy.sh</include>
+                <include>Dockerfile.tomcat</include>
+            </includes>
+        </fileSet>
     </fileSets>
 </archetype-descriptor>
