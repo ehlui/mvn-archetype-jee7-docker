@@ -4,7 +4,7 @@
     <groupId>${groupId}</groupId>
     <artifactId>${artifactId}</artifactId>
     <version>${version}</version>
-    <description>Simple project for JEE 7 and for Tomcat 8.5</description>
+    <description>Simple project for JEE 7 with servlet 3.1</description>
     <packaging>war</packaging>
     <name>${artifactId}</name>
     <url>http://www.ehlui.org</url>
@@ -16,7 +16,6 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-        <!--For JEE 7 and Tomcat 8.5 more in http://tomcat.apache.org/whichversion.html-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -27,6 +26,30 @@
 
     <build>
         <finalName>${artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+                <configuration>
+                    <outputDirectory>${project.basedir}/wars</outputDirectory>
+                </configuration>
+            </plugin>
+                <plugin>
+                    <!--On the phase package it will clean \target (we actually only need the \war )-->
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>2.4.1</version>
+                    <executions>
+                        <execution>
+                            <id>auto-clean</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>clean</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+        </plugins>
     </build>
 
     <properties>

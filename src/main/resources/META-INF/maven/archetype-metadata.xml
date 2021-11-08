@@ -19,5 +19,8 @@
         <fileSet>
             <directory>src/test/resources</directory>
         </fileSet>
+        <fileSet>
+            <directory>wars</directory>
+        </fileSet>
     </fileSets>
 </archetype-descriptor>
